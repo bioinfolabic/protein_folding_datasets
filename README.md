@@ -1,4 +1,3 @@
-# Especificar mais, dizer emxatamente que o programa precisa para funcionar, como e onde foi rodado. Coloar imagens de exemplos.
 # protein_folding_datasets
 
   This work presents datasets for the Protein Folding Problem (PFP), they consist in data of folding trajectories obtained by an in silico method.
