@@ -18,7 +18,7 @@ Within this part there is a C ++ program which, through the TAL input file, manu
 ### ▪ md_test_2gb1_alberts classification:
 Input file for the previous program. For each protein, the following variables were modified:
 
-proteína  | sequência |nMol|ProtLen|  LV |
+Protein  | Sequence |nMol|ProtLen|  LV |
 --------- | ----------|----|-------|-----|
 13FIB     | see paper | 13 |   13  |  26 |
 2GB1      | see paper | 56 |   56  | 112 |
