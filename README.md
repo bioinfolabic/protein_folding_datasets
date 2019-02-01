@@ -9,7 +9,9 @@ All datasets proposed in this work are available in https://mega.nz/#F!O4wBHQiB!
 ## DM cesar
 ### create datasets: 
 Within this part there is a C ++ program which, through the TAL input file, manufactures 1000 different initial structures for each protein and calculates its folding paths (the datasets), as exemplified in the image below, which contains the beginning of a dataset of one of the 1000 initial structures of a protein.
+
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
+
 ### md_test_2gb1_alberts classification:
 Input file for the previous program. For each protein, the following variables were modified:
 
@@ -18,13 +20,15 @@ proteína  | sequência |nMol|ProtLen|  LV |
 13FIB     | see paper | 13 |   13  |  26 |
 2GB1      | see paper | 56 |   56  | 112 |
 1PCY      | see paper | 99 |   99  | 198 |
+
 ### old_versions:
 Old versions of the "create_datasets" program.
 ### executa0.sh:
 Old versions of the "create_datasets" program.
 ### pathways_test:
 Examples of output from the "create_datasets" program. The program variables are the protein size, the "AB" sequence and the folding path of the structure.  The program saves the images in .png format in a folder, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program.
-![example_image](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
+
+![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
 
 
 
