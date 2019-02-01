@@ -4,13 +4,15 @@
   Three datasets are introduced in this paper, where one is based on the Fibonacci sequence (13FIBO) and the other two on biological sequences (2GB1 and 1PCY). Each dataset is composed of 1000 different trajectories data, which contains information on the structures of the protein during the folding process. In addition, it is also present the energy and radius rotation values for each structure.
 All datasets proposed in this work are available in https://mega.nz/#F!O4wBHQiB!mpM81jK9ycbSKPvdP57avw
 
+
+
 ## DM cesar
 ### create datasets: 
 Within this part there is a C ++ program which, through the TAL input file, manufactures 1000 different initial structures for each protein and calculates its folding paths (the datasets), as exemplified in the image below, which contains the beginning of a dataset of one of the 1000 initial structures of a protein.
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
 
 ### md_test_2gb1_alberts classification:
-input file for the previous program. For each protein, the following variables were modified:
+Input file for the previous program. For each protein, the following variables were modified:
 
 proteína  | sequência |nMol|ProtLen|  LV |
 --------- | ----------|----|-------|-----|
@@ -18,11 +20,22 @@ proteína  | sequência |nMol|ProtLen|  LV |
 2GB1      | see paper | 56 |   56  | 112 |
 1PCY      | see paper | 99 |   99  | 198 |
 
+### old_versions:
+Old versions of the "create_datasets" program.
+
+### executa0.sh:
+Old versions of the "create_datasets" program.
+### pathways_test:
+Examples of output from the "create_datasets" program. The program variables are the protein size, the "AB" sequence and the folding path of the structure.  The program saves the images in .png format in a folder, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program:
+![example_image](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
+ 
 
 
 
-## Images_folding:
-This folder contains the program "pathway_print_multi-subplot.py", responsible for making the images and videos of protein folding.
+## Images_folding
+### pathway_print_multi-subplot.py:
+A python program that, for a protein structure, creates images from the 1000 folding datasets.
+
 
 ## Program Heamap Kabsch RMSD:
 contains the kabsch algorithm, used in the program "dataset_heatmap_kabsch.py" to create, from the datasets, an .npy array that will be used in the making of the heatmaps.
