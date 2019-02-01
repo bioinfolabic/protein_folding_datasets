@@ -26,8 +26,7 @@ Old versions of the "create_datasets" program.
 ### executa0.sh:
 Old versions of the "create_datasets" program.
 ### pathways_test:
-Examples of output from the "create_datasets" program. The program variables are the protein size, the "AB" sequence and the folding path of the structure.  The program saves the images in .png format in a folder, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program:
-![example_image](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
+Examples of output from the "create_datasets" program. The program variables are the protein size, the "AB" sequence and the folding path of the structure.  The program saves the images in .png format in a folder, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program.
  
 
 
