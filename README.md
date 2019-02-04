@@ -50,9 +50,18 @@ Examples of output from the "create_datasets" program using a fibonacci sequence
 
 ## Images_folding
 ### ▪ pathway_print_multi-subplot.py:
-A python program that creates images of the structure's folding path from a dataset. The program variables are the protein size, the "AB" sequence and the folding path of the structure.  The program saves the images in .png format in a folder, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program.
+A python program that creates images of the structure's folding path from a dataset. The program saves the images in .png format, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program.
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
+
+To run the program simply replace the variables indicated in it, they are:
+
+```
+path_pathways = '/home/bruna/DM_leandro/pathways/1PCY/'       # folder in which the datasets are
+filename = 'pathways99_1000.txt'                              # name of the dataset from which the images will be created
+filesequencia = 'seq_99.txt'                                  # file containing the AB sequence of the protein
+path_save = 'imagens/img99/'                                  # folder where the images will be saved
+```
 
 To create a protein folding video, the name of the image files must follow a numerical sequence, as shown in the example:
 
@@ -64,7 +73,7 @@ Having the images, using linux just open the terminal in the folder containing t
 ffmpeg -r 3 -f image2 -s 720x480 -start_number 0 -i% d.png -vframes 1000 -vcodec libx264 -crf 25 -pix_fmt yuv420p folding.mp4
 ```
 
-Being 3 the number of frames per second, 720x480 the resolution, "% d.png" the name of the images, where "% d" assumes values between 0 and 1000, and "folding.mp4" is the resulting video.
+Being 3 the number of frames per second, 720x480 the resolution, "%d.png" the name of the images, where "%d" assumes values between 0 and 1000, and "folding.mp4" is the resulting video.
 
 
 ### ▪ images:
