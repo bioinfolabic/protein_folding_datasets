@@ -24,8 +24,7 @@ do
 done
 ```
 
-Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000.
-The following figure represents one of the program output files, which contains the beginning of a dataset of one of the 1000 initial structures of a protein.
+Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids in the protein. The following figure represents one of the program output files, which contains the beginning of a dataset of one of the 1000 initial structures of a protein.
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
 
