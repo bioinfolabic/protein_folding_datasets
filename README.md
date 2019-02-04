@@ -54,6 +54,19 @@ A python program that creates images of the structure's folding path from a data
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
 
+To create a protein folding video, the name of the image files must follow a numerical sequence, as shown in the example:
+
+![example_file_image](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_arquivo_imagem.png)
+
+Having the images, using linux just open the terminal in the folder containing the images and enter the command:
+
+```
+ffmpeg -r 3 -f image2 -s 720x480 -start_number 0 -i% d.png -vframes 1000 -vcodec libx264 -crf 25 -pix_fmt yuv420p folding.mp4
+```
+
+Being 3 the number of frames per second, 720x480 the resolution, "% d.png" the name of the images, where "% d" assumes values between 0 and 1000, and "folding.mp4" is the resulting video.
+
+
 ### ▪ images:
 Folder containing the examples of images obtained through the previous program.
 ### ▪ remove_lines.py:
