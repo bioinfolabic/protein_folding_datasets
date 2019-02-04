@@ -56,10 +56,10 @@ A python program that creates images of the structure's folding path from a data
 To run the program simply replace the variables indicated in it, they are:
 
 ```
-path_pathways = '/home/bruna/DM_leandro/pathways/1PCY/'       # folder in which the datasets are
-filename = 'pathways99_1000.txt'                              # name of the dataset from which the images will be created
-filesequencia = 'seq_99.txt'                                  # file containing the AB sequence of the protein
-path_save = 'imagens/img99/'                                  # folder where the images will be saved
+path_pathways = '/home/bruna/teste/13_FIBO/'        # folder in which the datasets are
+filename = 'pathways13_999.txt'                     # name of the dataset from which the images will be created
+filesequencia = 'seq_13.txt'                        # file containing the AB sequence of the protein
+path_save = 'img_13'                                # folder where the images will be saved
 ```
 
 To create a protein folding video, the name of the image files must follow a numerical sequence, as shown in the example:
