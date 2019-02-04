@@ -11,7 +11,21 @@ All datasets proposed in this work are available in https://mega.nz/#F!O4wBHQiB!
 
 ## DM cesar
 ### ▪ create_datasets: 
-Within this part there is a C ++ program which, through the TAL input file, manufactures 1000 different initial structures for each protein and calculates its folding paths (the datasets), as exemplified in the image below, which contains the beginning of a dataset of one of the 1000 initial structures of a protein.
+Within this part there is a C ++ program which, through an input file, creates 1000 different initial structures for each protein and calculates its folding paths (the datasets).
+To create a thousand different initial structures for each protein was used a random function initialized from a "seed" inserted in the program generated initial coodenates creating new structures. This seed is the identification number (ID) of each new structure. To run the program with a thousand different IDs an .sh file (executa0.sh) was created, as follows:
+
+```
+#!/bin/bash
+
+for i in {1..1001}
+do
+   gcc -o executavel main.c func_MD.c -lm
+   ./executavel md_test_2gb1_albertsclassification.in $i
+done
+```
+
+Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000.
+The following figure represents one of the program output files, which contains the beginning of a dataset of one of the 1000 initial structures of a protein.
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
 
@@ -26,8 +40,6 @@ Input file for the previous program. For each protein, the following variables w
 
 Being "Sequence" a sequence of proteins, nMol and ProtLen the number of amino acids (the size of the protein) and LV twice the size of it.
 ### ▪ old_versions:
-Old versions of the "create_datasets" program.
-### ▪ executa0.sh:
 Old versions of the "create_datasets" program.
 ### ▪ pathways_test:
 Examples of output from the "create_datasets" program using a fibonacci sequence. 
