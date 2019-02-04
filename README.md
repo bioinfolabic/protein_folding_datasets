@@ -32,13 +32,13 @@ The following figure represents one of the program output files, which contains 
 ### ▪ md_test_2gb1_alberts classification:
 Input file for the previous program. For each protein, the following variables were modified:
 
- Protein  |  Sequence | nMol | ProtLen |  LV  |
---------- | ----------|------|---------|------|
-13FIB     | see paper |  13  |    13   |  26  |
-2GB1      | see paper |  56  |    56   |  112 |
-1PCY      | see paper |  99  |    99   |  198 |
+ Protein  |  Sequence | nMol | ProtLen |  LV  |  nC  |
+--------- | ----------|------|---------|------|------|
+13FIB     | see paper |  13  |    13   |  26  |  12  |
+2GB1      | see paper |  56  |    56   |  112 |  55  |
+1PCY      | see paper |  99  |    99   |  198 |  98  |
 
-Being "Sequence" the AB sequence of the protein, nMol and ProtLen the number of amino acids (the size of the protein) and LV twice the size of it.
+Being "Sequence" the AB sequence of the protein, nMol and ProtLen the number of amino acids (the size of the protein), LV twice the size of it and nC is the number of amino acids minus one.
 ### ▪ old_versions:
 Old versions of the "create_datasets" program.
 ### ▪ pathways_test:
