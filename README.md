@@ -69,7 +69,7 @@ To create a protein folding video, the name of the image files must follow a num
 Having the images, using linux just open the terminal in the folder containing the images and enter the command:
 
 ```
-ffmpeg -r 3 -f image2 -s 720x480 -start_number 0 -i% d.png -vframes 1000 -vcodec libx264 -crf 25 -pix_fmt yuv420p folding.mp4
+ffmpeg -r 3 -f image2 -s 720x480 -start_number 0 -i %d.png -vframes 1000 -vcodec libx264 -crf 25 -pix_fmt yuv420p folding.mp4
 ```
 
 Being 3 the number of frames per second, 720x480 the resolution, "%d.png" the name of the images, where "%d" assumes values between 0 and 1000, and "folding.mp4" is the resulting video.
