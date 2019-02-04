@@ -28,7 +28,7 @@ Being "md_test_2gb1_albertsclassification.in" the input file with the protein da
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
 
-### ▪ md_test_2gb1_alberts classification:
+#### ▪▪ md_test_2gb1_alberts classification:
 Input file for the previous program. For each protein, the following variables were modified:
 
  Protein  |  Sequence | nMol | ProtLen |  LV  |  nC  |
