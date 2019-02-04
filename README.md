@@ -18,12 +18,13 @@ Within this part there is a C ++ program which, through the TAL input file, manu
 ### ▪ md_test_2gb1_alberts classification:
 Input file for the previous program. For each protein, the following variables were modified:
 
-Protein  | Sequence |nMol|ProtLen|  LV |
---------- | ----------|----|-------|-----|
-13FIB     | see paper | 13 |   13  |  26 |
-2GB1      | see paper | 56 |   56  | 112 |
-1PCY      | see paper | 99 |   99  | 198 |
+ Protein  |  Sequence | nMol | ProtLen |  LV  |
+--------- | ----------|------|---------|------|
+13FIB     | see paper |  13  |    13   |  26  |
+2GB1      | see paper |  56  |    56   |  112 |
+1PCY      | see paper |  99  |    99   |  198 |
 
+Being "Sequence" a sequence of proteins, nMol and ProtLen the number of amino acids (the size of the protein) and LV twice the size of it.
 ### ▪ old_versions:
 Old versions of the "create_datasets" program.
 ### ▪ executa0.sh:
