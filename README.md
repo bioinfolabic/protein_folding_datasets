@@ -38,7 +38,7 @@ Input file for the previous program. For each protein, the following variables w
 2GB1      | see paper |  56  |    56   |  112 |
 1PCY      | see paper |  99  |    99   |  198 |
 
-Being "Sequence" a sequence of proteins, nMol and ProtLen the number of amino acids (the size of the protein) and LV twice the size of it.
+Being "Sequence" the AB sequence of the protein, nMol and ProtLen the number of amino acids (the size of the protein) and LV twice the size of it.
 ### ▪ old_versions:
 Old versions of the "create_datasets" program.
 ### ▪ pathways_test:
