@@ -147,4 +147,4 @@ pathway_print_multi-subplot.py  |python 2.7|visual stidio code terminal |python 
 dataset_heatmap_kabsch.py       |python 2.7|visual stidio code terminal |python dataset_heatmap_kabsch.py     |numpy|
 rg.py                           |python 2.7|visual stidio code terminal |python rg.py                         |do not need            |
 switch_rg.py                    |python 2.7|visual stidio code terminal |switch_rg.py                         |do not need            |
-graphics.py                     |python 2.7|visual stidio code terminal |python graphics.py                   | |
+graphics.py                     |python 2.7|visual stidio code terminal |python graphics.py                   |numpy, matplotlib, seaborn|
