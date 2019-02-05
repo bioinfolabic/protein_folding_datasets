@@ -53,7 +53,7 @@ A python program that creates images of the structure's folding path from a data
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
 
-To run the program simply replace the variables indicated in it, they are:
+Before run the program, replace the following variables with the desired input files:
 
 ```
 path_pathways = '/home/bruna/teste/13_FIBO/' # folder in which the datasets are
@@ -86,7 +86,7 @@ Python program that removes all the contents of a file from a specific line. Thi
 
 ## Program Heamap Kabsch RMSD
 ### ▪ dataset_heatmap_kabsch.py:
-Python program that, from the pathways, creates a .npy array from which the initial and final heatmaps will be created. To run the program simply change the following data by the desired input files:
+Python program that, from the pathways, creates a .npy array from which the initial and final heatmaps will be created. Before run the program, change the following data by the desired input files:
 
 ```
 number_pathway = 1000                                                 # number of datasets / pathways
@@ -103,7 +103,10 @@ Examples of outputs from the previous program.
 
 ## Programs
 ### ▪ rg.py:
-For each dataset it calculates all the spinning spokes and saves it to a .txt file. This program is useful because it produces more accurate results.
+For each dataset this program recalculates the values of rGAll, rGH, and rGP and saves it to a .txt file, as exemplified below:
+
+![exemplo_rg](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_rg.png)
+
 ### ▪ switch_rg.py:
 Cria novos arquivos .txt usando os datasets das proteínas mas com os raios de giração calculados pelo programa anterior.
 ### ▪ graphics.py:
