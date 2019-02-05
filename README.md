@@ -11,9 +11,8 @@ All datasets proposed in this work are available in https://mega.nz/#F!O4wBHQiB!
 
 ## DM cesar
 ### ▪ create_datasets: 
-Within this part there is a C ++ program which, through an input file, creates 1000 different initial structures for each protein and calculates its folding paths (the datasets).
+Within this part there is a C ++ program which, through an input file, creates 1000 different initial structures for each protein and calculates its folding paths.
 To create a thousand different initial structures for each protein was used a random function initialized from a "seed" inserted in the program generated initial coodenates creating new structures. This seed is the identification number (ID) of each new structure. To run the program with a thousand different IDs an .sh file (executa0.sh) was created, as follows:
-
 ```
 #!/bin/bash
 
@@ -23,8 +22,7 @@ do
    ./executavel md_test_2gb1_albertsclassification.in $i
 done
 ```
-
-Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids in the protein. The following figure represents one of the program output files, which contains the beginning of a dataset of one of the 1000 initial structures of a protein.
+Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids of the protein. The following figure represents one of the program output files, which contains the beginning of one pathway.
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
 
@@ -49,19 +47,17 @@ Examples of output from the "create_datasets" program using a fibonacci sequence
 
 ## Images_folding
 ### ▪ pathway_print_multi-subplot.py:
-A python program that creates images of the structure's folding path from a dataset. The program saves the images in .png format, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program.
+A python program that creates images of the structure's folding path from a pathwat. The program saves the images in .png format, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Below is an example of the image produced by the program.
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
 
 Before run the program, replace the following variables with the desired input files:
-
 ```
 path_pathways = '/home/bruna/teste/13_FIBO/' # folder in which the datasets are
 filename = 'pathways13_999.txt'              # name of the dataset from which the images will be created
 filesequencia = 'seq_13.txt'                 # file containing the AB sequence of the protein
 path_save = 'img_13'                         # folder where the images will be saved
 ```
-
 To create a protein folding video, the name of the image files must follow a numerical sequence, as shown in the example:
 
 ![example_file_image](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_arquivo_imagem.png)
@@ -87,13 +83,11 @@ Python program that removes all the contents of a file from a specific line. Thi
 ## Program Heamap Kabsch RMSD
 ### ▪ dataset_heatmap_kabsch.py:
 Python program that, from the pathways, creates a .npy array from which the initial and final heatmaps will be created. Before run the program, change the following data by the desired input files:
-
 ```
 number_pathway = 1000                                                 # number of datasets / pathways
 path_pathways = '/home/bruna/teste/13FIBO/'                           # file folder
 filename = 'ABBABBABABBAB_pathwaystep3000_'+ str(i) +'_pathways.txt'  # name of datasets / pathways
 ```
-
 ### ▪ generate_dataset:
 Examples of outputs from the previous program.
 ### ▪ other programs
@@ -105,22 +99,19 @@ The other programs are required for dataset_heatmap_kabsch.py to work.
 
 ## Programs
 ### ▪ rg.py:
-For each dataset this program recalculates the values of rGAll, rGH, and rGP and saves it to a .txt file, as exemplified below:
+For each pathway this program recalculates the values of rGAll, rGH, and rGP and saves it to a .txt file, as exemplified below:
 
 ![exemplo_rg](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_rg.png)
 
 Before run the program, change the following data by the desired input files:
-
 ```
 n_arquivos = 1000                                                               # number of pathways
 s = "ABBABBABABBAB"                                                             # AB protein sequence
 with open("/home/bruna/heatmap/13_FIBO_rG/rg"+str(i)+".txt", "w") as saida:     # output file, file containing the new rGs
 with open("/home/bruna/heatmap/13_FIBO/pathways13_"+str(i)+".txt", "r") as f:   # pathways from which the rG will be calculated
 ```
-
-
 ### ▪ switch_rg.py:
-Cria novos arquivos .txt usando os datasets das proteínas mas com os raios de giração calculados pelo programa anterior.
+Creates new .txt files using the datasets of the proteins but with the generation rays calculated by the previous program.
 ### ▪ graphics.py:
 This program is responsible for creating the initial and final heatmaps of each protein, as well as creating the graph of the potential energy per step and the graph of the turn-by-step rays. Below are examples of the heatmap, graph of potential energy and graph of the spinning rays respectively.
 
