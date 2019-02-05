@@ -107,6 +107,16 @@ For each dataset this program recalculates the values of rGAll, rGH, and rGP and
 
 ![exemplo_rg](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_rg.png)
 
+Before run the program, change the following data by the desired input files:
+
+```
+n_arquivos = 1000                                                               # number of pathways
+s = "ABBABBABABBAB"                                                             # AB protein sequence
+with open("/home/bruna/heatmap/13_FIBO_rG/rg"+str(i)+".txt", "w") as saida:     # output file, file containing the new rGs
+with open("/home/bruna/heatmap/13_FIBO/pathways13_"+str(i)+".txt", "r") as f:   # pathways from which the rG will be calculated
+```
+
+
 ### ▪ switch_rg.py:
 Cria novos arquivos .txt usando os datasets das proteínas mas com os raios de giração calculados pelo programa anterior.
 ### ▪ graphics.py:
