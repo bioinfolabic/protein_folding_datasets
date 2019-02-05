@@ -86,12 +86,14 @@ Python program that removes all the contents of a file from a specific line. Thi
 
 ## Program Heamap Kabsch RMSD
 ### ▪ dataset_heatmap_kabsch.py:
-Python program that, starting from the 1000 datasets of a protein, creates a .npy array from which the initial and final heatmap will be created. To run the program you need to change the program folder, the name of the datasets and the folder where the output files will be saved, as indicated in the program:
+Python program that, from the pathways, creates a .npy array from which the initial and final heatmaps will be created. To run the program simply change the following data by the desired input files:
+
 ```
 number_pathway = 1000                                                 # number of datasets / pathways
 path_pathways = '/home/bruna/teste/13FIBO/'                           # file folder
 filename = 'ABBABBABABBAB_pathwaystep3000_'+ str(i) +'_pathways.txt'  # name of datasets / pathways
 ```
+
 ### ▪ generate_dataset:
 Examples of outputs from the previous program.
 
@@ -119,3 +121,13 @@ This program is responsible for creating the initial and final heatmaps of each 
 
 ## Results
 Contains all datasets and graphs generated during this work.
+
+
+
+
+#### All data that needs to be changed to place the input files are indicated in the program with the following comment:
+```
+#######################################################################################################
+########################################### CHANGE HERE ###############################################
+#######################################################################################################
+```
