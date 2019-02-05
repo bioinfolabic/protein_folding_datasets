@@ -142,9 +142,9 @@ Contains all datasets and graphs generated during this work.
 
 program                         |language |here to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
-create_datasets                 |C++      |linux terminal              |./executa0.sh                        |do not need            | 
+create_datasets                 |C++      |linux terminal              |./executa0.sh                        |-| 
 pathway_print_multi-subplot.py  |python 2.7|visual stidio code terminal |python pathway_print_multi-subplot.py|imageio, matplotlib|
 dataset_heatmap_kabsch.py       |python 2.7|visual stidio code terminal |python dataset_heatmap_kabsch.py     |numpy|
-rg.py                           |python 2.7|visual stidio code terminal |python rg.py                         |do not need            |
-switch_rg.py                    |python 2.7|visual stidio code terminal |switch_rg.py                         |do not need            |
+rg.py                           |python 2.7|visual stidio code terminal |python rg.py                         |-|
+switch_rg.py                    |python 2.7|visual stidio code terminal |switch_rg.py                         |-|
 graphics.py                     |python 2.7|visual stidio code terminal |python graphics.py                   |numpy, matplotlib, seaborn|
