@@ -19,11 +19,11 @@ saída do programa
 ## Path DM_cesar
 ### ▪ Sub-path create_datasets: 
 
-This folder contains the program used to generate the data of the folding paths using Molecular Dynamics (*define.h*,*function_MD.c* and *main.c*), which consist of files in the C ++ language. It is worth mentioning that there is no need to modify these codes because the variables are all parameterized in input files separately from the DM code.
+This folder contains the program used to generate the data of folding trajectories using Molecular Dynamics (*define.h*,*function_MD.c* and *main.c*), which consist of files in the C ++ language. It is worth mentioning that there is no need to modify these codes because the variables are all parameterized in input files separately from the DM code.
 
 ### ▪ executa0.sh: 
 
-The script *executa0.sh* allows to generate 1000 different spatiotemporal data of folding trajectories, as shown below:
+The script *executa0.sh* allows to generate 1000 different data of folding trajectories, as shown below:
 ```
 #!/bin/bash
 
@@ -40,11 +40,8 @@ program                         |language |where to run                |running 
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 create_datasets                 |C++      |linux terminal              |./executa0.sh                        |-| 
 
-The following figure represents one of the program output files, which contains the beginning of one pathway.
 
-![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
-
-#### ▪▪ md_test_2gb1_alberts classification:
+#### ▪▪ md_test_2gb1_alberts_classification.in:
 Input file for the previous program. For each protein, the following variables were modified:
 
  Protein  |  Sequence | nMol | ProtLen |  LV  |  nC  |
@@ -53,7 +50,14 @@ Input file for the previous program. For each protein, the following variables w
 2GB1      | see paper |  56  |    56   |  112 |  55  |
 1PCL      | see paper |  99  |    99   |  198 |  98  |
 
-Being "Sequence" the AB sequence of the protein, nMol and ProtLen the number of amino acids (the size of the protein), LV twice the size of it and nC is the number of amino acids minus one.
+where **Sequence** is the AB sequence of the protein, **nMol** and ProtLen are the number of amino acids (the size of the protein), **LV** is the size of the box edge where the protein is contained and **nC** is the number of amino acids minus one.
+
+
+The following figure represents one of the program output files, which contains the beginning of one pathway.
+
+![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
+
+
 ### ▪ old_versions:
 Old versions of the "create_datasets" program.
 ### ▪ pathways_test:
@@ -65,7 +69,7 @@ Examples of output from the "create_datasets" program using a fibonacci sequence
 
 ## Path Images_folding
 ### ▪ pathway_print_multi-subplot.py:
-A python program that creates images of the structure's folding path from a pathwat. The program saves the images in .png format, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Before run the program, replace the following variables with the desired input files:
+A python program that creates images of the structure folding path. The program saves the images in .png format, where an image is ploted for each state of pathway, so if the folding path has 1000 states, 1000 images will be created. Before you run the program,  replace the following variables with the desired input files:
 ```
 path_pathways = '/home/bruna/teste/13_FIBO/' # folder in which the datasets are
 filename = 'pathways13_999.txt'              # name of the dataset from which the images will be created
@@ -78,7 +82,7 @@ program                         |language |where to run                |running 
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 pathway_print_multi-subplot.py  |python 2.7|visual stidio code terminal |python pathway_print_multi-subplot.py|virtualenv: imageio, matplotlib|
 
-Below is an example of the image produced by the program.
+An example of the image produced by the program is shown below.
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_img_56_1000.png)
 
@@ -86,16 +90,16 @@ To create a protein folding video, the name of the image files must follow a num
 
 ![example_file_image](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_arquivo_imagem.png)
 
-Having the images, using linux just open the terminal in the folder containing the images and enter the command:
+with the images files, open the terminal in the folder, and enter  the follow command:
 
 ```
 ffmpeg -r 3 -f image2 -s 720x480 -start_number 0 -i %d.png -vframes 1000 -vcodec libx264 -crf 25 -pix_fmt yuv420p folding.mp4
 ```
 
-Being 3 the number of frames per second, 720x480 the resolution, "%d.png" the name of the images, where "%d" assumes values between 0 and 1000, and "folding.mp4" is the resulting video.
+where 3 the number of frames per second, 720x480 the resolution, "%d.png" the name of the images, where "%d" assumes values between 0 and 1000, and "folding.mp4" is the resulting video.
 
 
-### ▪ images:
+### ▪ Sub-Path images:
 Folder containing the examples of images obtained through the previous program.
 ### ▪ remove_lines.py:
 Python program that removes all the contents of a file from a specific line. This program is very useful if you run the "create_datasets" program twice and the pathways override.
@@ -104,9 +108,13 @@ Python program that removes all the contents of a file from a specific line. Thi
 
 
 
-## Path Program Heamap Kabsch RMSD
+## Path Program_Heamap_Kabsch_RMSD
+An analysis was accomplished to observe the spatial differences between the initial and final structures of the folding trajectories using heatmaps. For each dataset, all the 1,000 protein structures were compared to each other, at the beginning and the end of the trajectories. The comparison of pairs of structures was accomplished with the Kabsch algorithm, normalized between zero and one. Then, computed values were the plot in a heatmap.
+
 ### ▪ dataset_heatmap_kabsch.py:
-Python program that, from the pathways, creates a .npy array from which the initial and final heatmaps will be created. Before run the program, change the following data by the desired input files:
+
+This program creates a .npy matrix of spatial differences between the initial and final structures of the folding trajectories. Each point of the horizontal and vertical axes of the matrix represents a protein structure at a given point of the trajectory (either initial of final point). The higher number, the closer to 1 value it is in the Kabsch scale,  meaning that the structures tend to be more different. The opposite holds, meaning similar spatial structures.
+Before run the program, change the following data by the desired input files:
 ```
 number_pathway = 1000                                                 # number of datasets / pathways
 path_pathways = '/home/bruna/teste/13FIBO/'                           # file folder
@@ -125,11 +133,9 @@ The other programs are required for dataset_heatmap_kabsch.py to work.
 
 
 
-
-
 ## Path Programs
 ### ▪ rg.py:
-For each pathway this program recalculates the values of RgAll, RgH, and RgP and saves it to a .txt file. Before run the program, change the following data by the desired input files:
+For each pathway this program calculates the values of the RgAll, RgH, and RgP, and saves it to a .txt file. Before run the program, change the following data by the desired input files:
 ```
 n_arquivos = 1000                                                               # number of pathways
 s = "ABBABBABABBAB"                                                             # AB protein sequence
@@ -146,20 +152,8 @@ The following image represents the output of the program:
 
 ![exemplo_rg](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_rg.png)
 
-### ▪ switch_rg.py:
-This program uses the pathways of a protein and the rGs calculated by the previous program (which provide more accurate data) by creating a third .txt file with the Cartesian coordinates and potential energy of the pathways but the Rg calculated by the program "rg.py". Before running the program, replace the following files with the desired input files:
-```
- with open("/home/bruna/teste/13FIBO_rG/rg"+str(i)+".txt", "r") as a:                   # file generated by the program "rg.py"
- with open("/home/bruna/teste/13FIBO_Wrong/13_fibonacci_"+str(i)+".txt", "r+w") as c:   # file generated by the program "create datasets"
-```
-Running the program:
-
-program                         |language |where to run                |running the program                  |virtual machine        |
---------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
-switch_rg.py                    |python 2.7|visual stidio code terminal |switch_rg.py                         |-|
-
 ### ▪ graphics_rg.py:
-This program calculates the average Rg (RgH, RgP and RgALL) of all pathways, then plots a graph of the rG values by the step. Before running the program, change the input file:
+This program calculates the average Rg (RgH, RgP and RgALL) of all pathways, then plots a graph of the rG values per iteration. Before running the program, change the input file:
 ```
 with open("/home/bruna/Downloads/13_fibonacci/pathways13_"+str(i)+".txt", "r") as input: # file generated by the program "create datasets"
 ```
