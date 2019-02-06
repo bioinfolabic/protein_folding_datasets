@@ -2,7 +2,7 @@
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
 
- This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an \textit{in silico} method.
+ This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method.
 Three datasets are described: the first one is based on the Fibonacci sequence (13FIBO) and the other two on real biological sequences (2GB1 and 1PLC). Each dataset is composed of 1000 different trajectories data, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and  the free energy and radius of gyration values for each structure.
 All datasets proposed in this work are available in https://mega.nz/#F!O4wBHQiB!mpM81jK9ycbSKPvdP57avw
 
@@ -39,7 +39,7 @@ Input file for the previous program. For each protein, the following variables w
 --------- | ----------|------|---------|------|------|
 13FIB     | see paper |  13  |    13   |  26  |  12  |
 2GB1      | see paper |  56  |    56   |  112 |  55  |
-1PCY      | see paper |  99  |    99   |  198 |  98  |
+1PCL      | see paper |  99  |    99   |  198 |  98  |
 
 Being "Sequence" the AB sequence of the protein, nMol and ProtLen the number of amino acids (the size of the protein), LV twice the size of it and nC is the number of amino acids minus one.
 ### ▪ old_versions:
@@ -158,14 +158,14 @@ program             |language |where to run                |running the program 
 graphics_rg.py|python 2.7|visual stidio code terminal |python graphics_rg.py   |virtualenv: numpy, matplotlib, seaborn|
 
 The following image represents the output of the program:
-![example_rG](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/average_Rg_1PCY.png)
+![example_rG](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/average_Rg_1PCL.png)
 
 ### ▪ graphics_ep.py:
 This program calculates the average potential energy value of all pathways of three proteins (13FIBO, 2GB1 and 1PLC) and plots those values in a graph of the potential energy of each protein by step. Before running the program, change the input files:
 ```
 with open("/home/bruna/heatmap/13FIBO/13_fibonacci_"+str(i+1)+".txt", "r") as input: # pathways of the first protein (13FIB)
 with open("/home/bruna/heatmap/2GB1/pathways56_"+str(i)+".txt", "r") as input:       # pathways of the second protein (2GB1)
-with open("/home/bruna/heatmap/1PCY_99/pathways99_"+str(i)+".txt", "r") as input:    # pathways of the third protein (1PLC)
+with open("/home/bruna/heatmap/1PCL_99/pathways99_"+str(i)+".txt", "r") as input:    # pathways of the third protein (1PLC)
 ```
 Running the program:
 
@@ -193,7 +193,7 @@ program             |language |where to run                |running the program 
 graphics_heatmap.py|python 2.7|visual stidio code terminal|python graphics_heatmap.py|virtualenv: numpy, matplotlib, seaborn|
 
 The following image represents the output of the program:
-![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCY_begin.png)
+![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCL_begin.png)
 
 
 ## Results
