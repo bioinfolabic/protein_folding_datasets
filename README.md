@@ -64,7 +64,7 @@ Running the program:
 
 program                         |language |where to run                |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
-pathway_print_multi-subplot.py  |python 2.7|visual stidio code terminal |python pathway_print_multi-subplot.py|imageio, matplotlib|
+pathway_print_multi-subplot.py  |python 2.7|visual stidio code terminal |python pathway_print_multi-subplot.py|virtualenv: imageio, matplotlib|
 
 Below is an example of the image produced by the program.
 
@@ -104,7 +104,7 @@ Running the program:
 
   program                         |language |where to run              |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
-dataset_heatmap_kabsch.py       |python 2.7|visual stidio code terminal |python dataset_heatmap_kabsch.py     |numpy|
+dataset_heatmap_kabsch.py       |python 2.7|visual stidio code terminal |python dataset_heatmap_kabsch.py     |virtualenv: numpy|
 
 ### ▪ generate_dataset:
 Examples of outputs from the previous program.
@@ -150,7 +150,7 @@ switch_rg.py                    |python 2.7|visual stidio code terminal |switch_
 
 program                         |language |where to run                |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
-graphics.py                     |python 2.7|visual stidio code terminal |python graphics.py                   |numpy, matplotlib, seaborn|
+graphics.py                     |python 2.7|visual stidio code terminal |python graphics.py                   |virtualenv: numpy, matplotlib, seaborn|
 
 This program is responsible for creating the initial and final heatmaps of each protein, as well as creating the graph of the potential energy per step and the graph of the turn-by-step rays. Below are examples of the heatmap, graph of potential energy and graph of the spinning rays respectively.
 
