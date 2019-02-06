@@ -21,18 +21,20 @@ saída do programa
 
 This folder contains the program used to generate the data of the folding paths using Molecular Dynamics (*define.h*,*function_MD.c* and *main.c*), which consist of files in the C ++ language. It is worth mentioning that there is no need to modify these codes because the variables are all parameterized in input files separately from the DM code.
 
-Within this part there is a C ++ program which, through an script *executa0.sh*, generate 1000 different initial structures.
-To create the structures was used a random function initialized from a "seed" inserted in the program generated initial coodenates creating new structures. This seed is the identification number (ID) of each new structure. To run the program with a thousand different IDs an .sh file (executa0.sh) was created, as follows:
+### ▪ executa0.sh: 
+
+The script *executa0.sh* allows to generate 1000 different spatiotemporal data of folding trajectories, as shown below:
 ```
 #!/bin/bash
 
+gcc -o executavel main.c func_MD.c -lm
 for i in {1..1001}
 do
-   gcc -o executavel main.c func_MD.c -lm
    ./executavel md_test_2gb1_albertsclassification.in $i
 done
 ```
-Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids of the protein. To run the program:
+where the first line compiles the DM code and each loop generates one folding trajectory.
+the input file "md_test_2gb1_albertsclassification.in" is the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids of the protein. To run the program:
 
 program                         |language |where to run                |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
