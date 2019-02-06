@@ -24,7 +24,7 @@ done
 ```
 Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids of the protein. To run the program:
 
-program                         |language |here to run the program     |running the program                  |virtual machine        |
+program                         |language |where to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 create_datasets                 |C++      |linux terminal              |./executa0.sh                        |-| 
 
@@ -62,7 +62,7 @@ path_save = 'img_13'                         # folder where the images will be s
 ```
 Running the program:
 
-program                         |language |here to run the program     |running the program                  |virtual machine        |
+program                         |language |where to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 pathway_print_multi-subplot.py  |python 2.7|visual stidio code terminal |python pathway_print_multi-subplot.py|imageio, matplotlib|
 
@@ -102,7 +102,7 @@ filename = 'ABBABBABABBAB_pathwaystep3000_'+ str(i) +'_pathways.txt'  # name of 
 ```
 Running the program:
 
-program                         |language |here to run the program     |running the program                  |virtual machine        |
+program                         |language |where to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 dataset_heatmap_kabsch.py       |python 2.7|visual stidio code terminal |python dataset_heatmap_kabsch.py     |numpy|
 
@@ -126,7 +126,7 @@ with open("/home/bruna/heatmap/13_FIBO/pathways13_"+str(i)+".txt", "r") as f:   
 ```
 Running the program:
 
-program                         |language |here to run the program     |running the program                  |virtual machine        |
+program                         |language |where to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 rg.py                           |python 2.7|visual stidio code terminal |python rg.py                         |-|
 
@@ -142,13 +142,13 @@ This program uses the pathways of a protein and the rGs calculated by the previo
 ```
 Running the program:
 
-program                         |language |here to run the program     |running the program                  |virtual machine        |
+program                         |language |where to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 switch_rg.py                    |python 2.7|visual stidio code terminal |switch_rg.py                         |-|
 
 ### ▪ graphics.py:
 
-program                         |language |here to run the program     |running the program                  |virtual machine        |
+program                         |language |where to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 graphics.py                     |python 2.7|visual stidio code terminal |python graphics.py                   |numpy, matplotlib, seaborn|
 
