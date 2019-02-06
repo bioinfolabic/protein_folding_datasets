@@ -1,17 +1,16 @@
 # protein_folding_datasets
 
-![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
-
- This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method.
-Three datasets are described: the first one is based on the Fibonacci sequence (13FIBO) and the other two on real biological sequences (2GB1 and 1PLC). Each dataset is composed of 1000 different trajectories data, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and  the free energy and radius of gyration values for each structure.
+ This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method. Three datasets are described: the first one is based on the Fibonacci sequence (13FIBO) and the other two on real biological sequences (**2GB1** and **1PLC**). Each dataset is composed of **1000 different trajectories data**, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and the free energy and radius of gyration values for each structure.
 All datasets proposed in this work are available in https://mega.nz/#F!O4wBHQiB!mpM81jK9ycbSKPvdP57avw
 
 
 
+![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
+
 
 ## DM cesar
 ### ▪ create_datasets: 
-Within this part there is a C ++ program which, through an input file, creates 1000 different initial structures for each protein and calculates its folding paths.
+Within this part there is a C ++ program which, through an input file *executa.sh*, creates 1000 different initial structures for each protein and calculates its folding paths.
 To create a thousand different initial structures for each protein was used a random function initialized from a "seed" inserted in the program generated initial coodenates creating new structures. This seed is the identification number (ID) of each new structure. To run the program with a thousand different IDs an .sh file (executa0.sh) was created, as follows:
 ```
 #!/bin/bash
