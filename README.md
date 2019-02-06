@@ -22,7 +22,13 @@ do
    ./executavel md_test_2gb1_albertsclassification.in $i
 done
 ```
-Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids of the protein. The following figure represents one of the program output files, which contains the beginning of one pathway.
+Being "md_test_2gb1_albertsclassification.in" the input file with the protein data, and "$ i" represents the ID of that structure, being able to assume values from 1 to 1000. The program saves the data in a folder whose name is the number of amino acids of the protein. To run the program:
+
+program                         |language |here to run the program     |running the program                  |virtual machine        |
+--------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
+create_datasets                 |C++      |linux terminal              |./executa0.sh                        |-| 
+
+The following figure represents one of the program output files, which contains the beginning of one pathway.
 
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/format_dataset.png)
 
