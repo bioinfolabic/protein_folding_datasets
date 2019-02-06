@@ -125,6 +125,7 @@ with open("/home/bruna/heatmap/13_FIBO_rG/rg"+str(i)+".txt", "w") as saida:     
 with open("/home/bruna/heatmap/13_FIBO/pathways13_"+str(i)+".txt", "r") as f:   # pathways from which the rG will be calculated
 ```
 Running the program:
+
 program                         |language |here to run the program     |running the program                  |virtual machine        |
 --------------------------------|---------|----------------------------|-------------------------------------|-----------------------|
 rg.py                           |python 2.7|visual stidio code terminal |python rg.py                         |-|
