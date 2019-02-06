@@ -4,14 +4,25 @@
 All datasets proposed in this work are available in https://mega.nz/#F!O4wBHQiB!mpM81jK9ycbSKPvdP57avw
 
 
-
+An animation of a 1PCL protein folding path is shown below.
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
 
 
-## DM cesar
-### ▪ create_datasets: 
-Within this part there is a C ++ program which, through an input file *executa.sh*, creates 1000 different initial structures for each protein and calculates its folding paths.
-To create a thousand different initial structures for each protein was used a random function initialized from a "seed" inserted in the program generated initial coodenates creating new structures. This seed is the identification number (ID) of each new structure. To run the program with a thousand different IDs an .sh file (executa0.sh) was created, as follows:
+The programs that were used to generate the datasets and charts for the analyzes are described below.
+
+
+o que é o programa
+o que mudar no programa
+como rodar o programa 
+saída do programa
+
+## Path DM_cesar
+### ▪ Sub-path create_datasets: 
+
+This folder contains the program used to generate the data of the folding paths using Molecular Dynamics (*define.h*,*function_MD.c* and *main.c*), which consist of files in the C ++ language. It is worth mentioning that there is no need to modify these codes because the variables are all parameterized in input files separately from the DM code.
+
+Within this part there is a C ++ program which, through an script *executa0.sh*, generate 1000 different initial structures.
+To create the structures was used a random function initialized from a "seed" inserted in the program generated initial coodenates creating new structures. This seed is the identification number (ID) of each new structure. To run the program with a thousand different IDs an .sh file (executa0.sh) was created, as follows:
 ```
 #!/bin/bash
 
@@ -50,7 +61,7 @@ Examples of output from the "create_datasets" program using a fibonacci sequence
 
 
 
-## Images_folding
+## Path Images_folding
 ### ▪ pathway_print_multi-subplot.py:
 A python program that creates images of the structure's folding path from a pathwat. The program saves the images in .png format, being an image for each configuration of the structure, so if the folding path has 1000 configurations, 1000 images will be made. Before run the program, replace the following variables with the desired input files:
 ```
@@ -91,7 +102,7 @@ Python program that removes all the contents of a file from a specific line. Thi
 
 
 
-## Program Heamap Kabsch RMSD
+## Path Program Heamap Kabsch RMSD
 ### ▪ dataset_heatmap_kabsch.py:
 Python program that, from the pathways, creates a .npy array from which the initial and final heatmaps will be created. Before run the program, change the following data by the desired input files:
 ```
@@ -114,7 +125,7 @@ The other programs are required for dataset_heatmap_kabsch.py to work.
 
 
 
-## Programs
+## Path Programs
 ### ▪ rg.py:
 For each pathway this program recalculates the values of rGAll, rGH, and rGP and saves it to a .txt file. Before run the program, change the following data by the desired input files:
 ```
@@ -195,7 +206,7 @@ The following image represents the output of the program:
 ![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCL_begin.png)
 
 
-## Results
+## Path Results
 Contains all datasets and graphs generated during this work.
 
 
