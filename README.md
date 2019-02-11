@@ -152,6 +152,7 @@ The following image represents the output of the program:
 
 ![exemplo_rg](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_rg.png)
 
+
 ### ▪ graphics_rg.py:
 This program calculates the average Rg (RgH, RgP and RgALL) of all pathways, then plots a graph of the rG values per iteration. Before running the program, change the input file:
 ```
