@@ -199,7 +199,7 @@ graphics_heatmap.py|python 2.7|visual stidio code terminal|python graphics_heatm
 
 The following image represents the output of the program:
 
-![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCL_begin.png)
+![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCY_begin.png)
 
 
 ## Path Results
