@@ -198,6 +198,7 @@ program             |language |where to run                |running the program 
 graphics_heatmap.py|python 2.7|visual stidio code terminal|python graphics_heatmap.py|virtualenv: numpy, matplotlib, seaborn|
 
 The following image represents the output of the program:
+
 ![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCL_begin.png)
 
 
