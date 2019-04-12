@@ -106,7 +106,7 @@ Python program that removes all the contents of a file from a specific line. Thi
 
 
 
-## Path Program_Heamap_Kabsch_RMSD
+## Path Programa Heamap Kabsch RMSD
 An analysis was accomplished to observe the spatial differences between the initial and final structures of the folding trajectories using heatmaps. For each dataset, all the 1,000 protein structures were compared to each other, at the beginning and the end of the trajectories. The comparison of pairs of structures was accomplished with the Kabsch algorithm, normalized between zero and one. Then, computed values were the plot in a heatmap.
 
 ### ▪ dataset_heatmap_kabsch.py:
