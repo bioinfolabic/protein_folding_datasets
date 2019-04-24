@@ -1,18 +1,12 @@
 # protein_folding_datasets
 
- This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method. Three datasets are described: the first one is based on the Fibonacci sequence (13FIBO) and the other two on real biological sequences (**2GB1** and **1PLC**). Each dataset is composed of **1000 different trajectories data**, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and the free energy and radius of gyration values for each structure.
+ This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method. Four datasets are described: the first one is based on the Fibonacci sequence (13FIBO) and the other three on real biological sequences (**2GB1*,**1PLC** and **5NAZ**). Each dataset is composed of **1000 different trajectories data**, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and the free energy and radius of gyration values for each structure.
 
 An animation of a 1PCL protein folding path is shown below.
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
 
 
-The programs that were used to generate the datasets and charts for the analyzes are described below.
-
-
-o que é o programa
-o que mudar no programa
-como rodar o programa 
-saída do programa
+The programs used to generate the datasets and charts for the analyzes are described below.
 
 ## Path DM_cesar
 ### ▪ Sub-path create_datasets: 
