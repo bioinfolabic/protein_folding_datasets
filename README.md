@@ -165,6 +165,7 @@ This program calculates the average potential energy value of all pathways of th
 with open("/home/bruna/heatmap/13FIBO/13_fibonacci_"+str(i+1)+".txt", "r") as input: # pathways of the first protein (13FIB)
 with open("/home/bruna/heatmap/2GB1/pathways56_"+str(i)+".txt", "r") as input:       # pathways of the second protein (2GB1)
 with open("/home/bruna/heatmap/1PCL_99/pathways99_"+str(i)+".txt", "r") as input:    # pathways of the third protein (1PLC)
+with open("/home/bruna/heatmap/5NAZ_229/pathways229_"+str(i)+".txt", "r") as input:    # pathways of the fourth protein (5NAZ)
 ```
 Running the program:
 
