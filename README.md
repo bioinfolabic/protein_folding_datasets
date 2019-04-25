@@ -198,7 +198,7 @@ The following image represents the output of the program:
 
 
 ## Path GPU
-To use the GPU program you need to have a GPU with pascal support. The pathways of this work were run on Titan Xp with Pascal 8.
+To use the GPU program you need to have a GPU with pascal and cuda support. The pathways of this work were run on Titan Xp with Cuda 8.
 
 ### ▪ Makefile:
 File with the commands for compiling and running the program in GPU.
@@ -221,19 +221,27 @@ To execute the exemplified command as well as all subsequent commands through th
 ```
 make run_all_5NAZ_1_0
 ```
+### ▪ functions.cu:
+
+
+### ▪ main.c:
+
+### ▪ mt.h:
+
+
 
 ## Path Results
 Contains all datasets and graphs generated during this work.
 
 ## All data that needs to be changed to place the input files are indicated in the program with the following comment:
 ```
-#######################################################################################################
-########################################### CHANGE HERE ###############################################
-#######################################################################################################
+####################################################################################################
+########################################### CHANGE HERE ############################################
+####################################################################################################
 ```
 or
 ```
-########################################################################################### CHANGE HERE
+######################################################################################## CHANGE HERE
 ```
 
 ## Related Works
