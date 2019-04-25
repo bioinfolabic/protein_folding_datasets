@@ -157,7 +157,7 @@ program             |language |where to run                |running the program 
 graphics_rg.py|python 2.7|visual stidio code terminal |python graphics_rg.py   |virtualenv: numpy, matplotlib, seaborn|
 
 The following image represents the output of the program:
-![example_rG](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/average_Rg_1PCL.png)
+![example_rG](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo_rg.png)
 
 ### ▪ graphics_ep.py:
 This program calculates the average potential energy value of all pathways of three proteins (13FIBO, 2GB1 and 1PLC) and plots those values in a graph of the potential energy of each protein by step. Before running the program, change the input files:
