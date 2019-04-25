@@ -57,6 +57,47 @@ Examples of output from the "create_datasets" program using a fibonacci sequence
 
 
 
+## Path GPU
+To use the GPU program you need to have a GPU with pascal and cuda support. The pathways of this work were run on Titan Xp with Cuda 8.
+The input file of the program in GPU is the same one used by the program in CPU, being the datasets produced in the program in GPU referring to proteins 1PLC and 5NAZ. The input file data is:
+
+ Protein  |  Sequence | nMol | ProtLen |  LV  |   nC  |
+--------- | ----------|------|---------|------|-------|
+1PCL      | see paper |  99  |    99   |  198 |   98  |
+5NAZ      | see paper | 229  |   229   |  458 |  228  |
+
+### ▪ Makefile:
+File with the commands for compiling and running the program in GPU.
+The compilation of the file is given by two commands:
+```
+nvcc --gpu-architecture = compute_61 --device -c main.c functions.cu
+nvcc --gpu-architecture = compute_61 main.o functions.o
+```
+To run the commands in linux just use the terminal to enter the folder where the files are contained and type:
+```
+make all
+```
+Once compiled, the program is ready to run. For this you can use the command:
+```
+./a.out Proteins / 5NAZ / 5NAZ_229.in Proteins / 5NAZ / GPU1_0 / 5NAZ_229_pathway 00> 5NAZ_229.txt 20; \
+```
+Being a.out the generated file, "Proteins / 5NAZ /" the location of the input file, "5NAZ_229.in" the input file, "Proteins / 5NAZ / GPU1_0 /" the location where the pathway will be saved, "5NAZ_229_pathway 00 > 5NAZ_229.txt "the name of the resulting pathway where" 00> "indicates where the program will place a variable to identify the pathway," 2 "indicates the id of the pathway to be generated and" 0 "indicates the GPU in which the program will be executed.
+
+To execute the exemplified command as well as all subsequent commands through the linux terminal just use the command:
+```
+make run_all_5NAZ_1_0
+```
+### ▪ functions.cu:
+Through the library "mt.h" this program places the amino acids in space generating an initial structure of the protein then generated from the structure it calculates the value of radii of gyration and potential energy that estutura then it saves this data in a .txt file and proceed to the next folding structure.
+
+### ▪ main.c:
+It receives the input file and is responsible for calling the functions of the program "functions.cu"
+
+### ▪ mt.h:
+It is the Mersenne Twister library used by the program "functions.cu" in order to position the amino acids through space.
+
+
+
 
 
 ## Path Images_folding
@@ -196,45 +237,6 @@ The following image represents the output of the program:
 
 ![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCY_begin.png)
 
-
-## Path GPU
-To use the GPU program you need to have a GPU with pascal and cuda support. The pathways of this work were run on Titan Xp with Cuda 8.
-The input file of the program in GPU is the same one used by the program in CPU, being the datasets produced in the program in GPU referring to proteins 1PLC and 5NAZ. The input file data is:
-
- Protein  |  Sequence | nMol | ProtLen |  LV  |   nC  |
---------- | ----------|------|---------|------|-------|
-1PCL      | see paper |  99  |    99   |  198 |   98  |
-5NAZ      | see paper | 229  |   229   |  458 |  228  |
-
-### ▪ Makefile:
-File with the commands for compiling and running the program in GPU.
-The compilation of the file is given by two commands:
-```
-nvcc --gpu-architecture = compute_61 --device -c main.c functions.cu
-nvcc --gpu-architecture = compute_61 main.o functions.o
-```
-To run the commands in linux just use the terminal to enter the folder where the files are contained and type:
-```
-make all
-```
-Once compiled, the program is ready to run. For this you can use the command:
-```
-./a.out Proteins / 5NAZ / 5NAZ_229.in Proteins / 5NAZ / GPU1_0 / 5NAZ_229_pathway 00> 5NAZ_229.txt 20; \
-```
-Being a.out the generated file, "Proteins / 5NAZ /" the location of the input file, "5NAZ_229.in" the input file, "Proteins / 5NAZ / GPU1_0 /" the location where the pathway will be saved, "5NAZ_229_pathway 00 > 5NAZ_229.txt "the name of the resulting pathway where" 00> "indicates where the program will place a variable to identify the pathway," 2 "indicates the id of the pathway to be generated and" 0 "indicates the GPU in which the program will be executed.
-
-To execute the exemplified command as well as all subsequent commands through the linux terminal just use the command:
-```
-make run_all_5NAZ_1_0
-```
-### ▪ functions.cu:
-Through the library "mt.h" this program places the amino acids in space generating an initial structure of the protein then generated from the structure it calculates the value of radii of gyration and potential energy that estutura then it saves this data in a .txt file and proceed to the next folding structure.
-
-### ▪ main.c:
-It receives the input file and is responsible for calling the functions of the program "functions.cu"
-
-### ▪ mt.h:
-It is the Mersenne Twister library used by the program "functions.cu" in order to position the amino acids through space.
 
 ## Path Results
 Contains all datasets and graphs generated during this work.
