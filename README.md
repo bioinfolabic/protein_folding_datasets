@@ -200,6 +200,30 @@ The following image represents the output of the program:
 ## Path Results
 Contains all datasets and graphs generated during this work.
 
+## Path GPU
+To use the GPU program you need to have a GPU with pascal support. The pathways of this work were run on Titan Xp with Pascal 8.
+
+### ▪ Makefile:
+File with the commands for compiling and running the program in GPU.
+The compilation of the file is given by two commands:
+```
+nvcc --gpu-architecture = compute_61 --device -c main.c functions.cu
+nvcc --gpu-architecture = compute_61 main.o functions.o
+```
+To run the commands in linux just use the terminal to enter the folder where the files are contained and type:
+```
+make all
+```
+Once compiled, the program is ready to run. For this you can use the command:
+```
+./a.out Proteins / 5NAZ / 5NAZ_229.in Proteins / 5NAZ / GPU1_0 / 5NAZ_229_pathway 00> 5NAZ_229.txt 20; \
+```
+Being a.out the generated file, "Proteins / 5NAZ /" the location of the input file, "5NAZ_229.in" the input file, "Proteins / 5NAZ / GPU1_0 /" the location where the pathway will be saved, "5NAZ_229_pathway 00 > 5NAZ_229.txt "the name of the resulting pathway where" 00> "indicates where the program will place a variable to identify the pathway," 2 "indicates the id of the pathway to be generated and" 0 "indicates the GPU in which the program will be executed.
+
+To execute the exemplified command as well as all subsequent commands through the linux terminal just use the command:
+```
+make run_all_5NAZ_1_0
+```
 
 ## All data that needs to be changed to place the input files are indicated in the program with the following comment:
 ```
