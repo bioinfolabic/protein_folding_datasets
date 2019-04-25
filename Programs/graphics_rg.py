@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 # numero de arquivos a serem lidos
 n_arquivos = 1000
 n_dados = 1000
-max_step = 3000000
+max_step = 1000000
+step = 1000
 
 # criando o vetor da energia exponencial
 vetor_RgAll = [] # um vetor dinâmico para a energia exponencial de um arquivo
@@ -22,16 +23,20 @@ vetor_all_RgAll_media = [] # vetor com a média de todos os vetores
 vetor_all_RgH_media = []
 vetor_all_RgP_media = []
 
+vetor_all_RgAll_media_normalizado = []
+vetor_all_RgH_media_normalizado = []
+vetor_all_RgP_media_normalizado = []
+
 vetor_step = []
 
-
+vetor_step.append(1)
 # pegando os valores de cada Step
-for i in xrange(0, max_step):
-        if i%3000==0 :
+for i in xrange(2, max_step):
+        if i%step==0 :
                 vetor_step.append(i)
 # pegando as enegias de todos os arquivos
 for i in xrange(1, n_arquivos+1):
-    with open("/home/bruna/Downloads/13_fibonacci/pathways13_"+str(i)+".txt", "r") as input: ################################################################################ CHANGE HERE
+    with open("/home/bruna/DM/Proteinas/1PLC/pathways/1PCY/pathways99_"+str(i)+".txt", "r") as input: ################################################################################ CHANGE HERE
         vetor_RgAll = [] # limpando o vetor
         vetor_RgH = []
         vetor_RgP = []
@@ -60,25 +65,59 @@ for k in xrange(0, n_dados):
         vetor_all_RgAll_media.append(soma1) # vetor com a média de todos os vetores
         vetor_all_RgH_media.append(soma2)
         vetor_all_RgP_media.append(soma3)
-# print vetor_all_media
+max_rgall = vetor_all_RgAll_media[0]
+max_rgh = vetor_all_RgH_media[0]
+max_rgp = vetor_all_RgP_media[0]
+print 'max_rgall = ' + str(max_rgall)
+print 'max_rgh = ' + str(max_rgh)
+print 'max_rgp = ' + str(max_rgp)
+for k in xrange(0, n_dados):
+        vetor_all_RgAll_media_normalizado.append(vetor_all_RgAll_media[k]/(max_rgall)) # divide por -1*max
+        vetor_all_RgH_media_normalizado.append(vetor_all_RgH_media[k]/(max_rgall)) # divide por -1*max
+        vetor_all_RgP_media_normalizado.append(vetor_all_RgP_media[k]/(max_rgall)) # divide por -1*max
+
+
+dataRgAll = []
+dataRgH = []
+dataRgP = []
+# calculando o desvio padrão do último valor da energia potencial
+'''
+for i in xrange (0, n_arquivos):
+        dataRgAll.append(vetor_all_RgAll[i][999])
+        dataRgH.append(vetor_all_RgH[i][999])
+        dataRgP.append(vetor_all_RgP[i][999])
+vRgAll = np.var(dataRgAll)
+vRgH = np.var(dataRgH)
+vRgP = np.var(dataRgP)
+
+dRgAll = np.sqrt(vRgAll)
+dRgH = np.sqrt(vRgH)
+dRgP = np.sqrt(vRgP)
+
+print "Desvio padrão RgAll = " + str(dRgAll)
+print "Desvio padrão RgH = " + str(dRgH)
+print "Desvio padrão RgP = " + str(dRgP)
 print "fim! :D"
-print vetor_all_RgAll_media[999] # vetor com a média de todos os vetores
-print vetor_all_RgH_media[999]
-print vetor_all_RgP_media[999]
+# print vetor_all_media
+print "fim! :)"
+print "Media RgAll = " +str(vetor_all_RgAll_media[999]) # vetor com a média de todos os vetores
+print "Media rgH = " + str(vetor_all_RgH_media[999])
+print "Media RgP = " + str(vetor_all_RgP_media[999])'''
 # agora fazendo o gráfico dos dados recolhidos
-plt.plot(vetor_step, vetor_all_RgAll_media, label="Average RgAll")
-plt.plot(vetor_step, vetor_all_RgH_media, label="Average RgH")
-plt.plot(vetor_step, vetor_all_RgP_media, label="Average RgP")
+plt.plot(vetor_step, vetor_all_RgAll_media_normalizado, label="Average RgAll")
+plt.plot(vetor_step, vetor_all_RgH_media_normalizado, label="Average RgH")
+plt.plot(vetor_step, vetor_all_RgP_media_normalizado, label="Average RgP")
 # colocando limites nos eixos e especificando a notação
-plt.axis(ymin = 0.4, ymax = 7)
+plt.axis(ymin = -0.1, ymax = 1.1)
 plt.ticklabel_format(axis='both', style='sci', scilimits=(0,0), useMathText=True)
 # escrevendo o título e o nome dos eixos em inglês
-plt.xlabel('Pathway step (1e6)', labelpad=15, fontsize=20)
-plt.ylabel('Average Rg', labelpad=15, fontsize=20)
+text = 'Average Rg (x' + str(round(max_rgall, 2)) + ')'
+plt.xlabel('Pathway step (x1e6)', labelpad=15, fontsize=20)
+plt.ylabel(text, labelpad=15, fontsize=20)
 plt.xticks(fontsize = 20)
 plt.yticks(fontsize = 20)
 plt.grid(True)
 plt.legend(loc="upper right", fontsize=20)
 plt.rcParams['figure.figsize'] = (11,7)
-#plt.savefig('average_Rg_13_fibonacci.png', orientation='landscape', dpi=100, bbox_inches='tight')
+plt.savefig('/home/bruna/DM/graficos_rg/rg_1PLC.png', orientation='landscape', dpi=100, bbox_inches='tight')
 plt.show()
