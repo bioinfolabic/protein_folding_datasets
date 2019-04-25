@@ -211,3 +211,45 @@ or
 ```
 ########################################################################################### CHANGE HERE
 ```
+
+## Related Works
+```
+@inproceedings{hattori2018,
+ author = {Hattori, L.T. and Ben{\'i}tez, C.M.V. and Lopes, H.S.},
+ booktitle = {Proc. IEEE World Congress on Computational Intelligence},
+ title = {{A Novel Approach to Protein Folding Prediction based on Long Short-Term Memory Networks: A Preliminary Investigation and Analysis}},
+ year = {2018},
+ pages = {1--6},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ}
+} 
+
+@phdthesis{benitez2015,
+  title={{Contributions to the Study of the Protein Folding Problem using Bioinspired Computation and Molecular Dynamics}},
+  author={Ben{\'\i}tez, C.M.V.},
+  type={{PhD} Thesis},
+  year={2015},
+  school={Federal University of Technology Parana (UTFPR)},
+  pages={191}
+}
+
+@inproceedings{benitez2012molecular,
+  title={{Molecular Dynamics for Simulating the Protein Folding Process Using the {3D AB} Off-Lattice Model}},
+  author={Ben{\'\i}tez, C.M.V. and Lopes, H.S.},
+  booktitle={Proc. 7th Brazilian Symposium on Bioinformatics},
+  location={Campo Grande, MS},
+  pages={61--72},
+  year={2012},
+  publisher={Springer},
+  address={Heidelberg}
+}
+@article{stillinger1995collective,
+  title={{Collective aspects of protein folding illustrated by a toy model}},
+  author={Stillinger, F.H. and Head-Gordon, T.},
+  journal={Physical Review E},
+  volume={52},
+  number={3},
+  pages={2872},
+  year={1995}
+}
+```
