@@ -228,9 +228,10 @@ To execute the exemplified command as well as all subsequent commands through th
 make run_all_5NAZ_1_0
 ```
 ### ▪ functions.cu:
-
+Through the library "mt.h" this program places the amino acids in space generating an initial structure of the protein then generated from the structure it calculates the value of radii of gyration and potential energy that estutura then it saves this data in a .txt file and proceed to the next folding structure.
 
 ### ▪ main.c:
+It receives the input file and is responsible for calling the functions of the program "functions.cu"
 
 ### ▪ mt.h:
 It is the Mersenne Twister library used by the program "functions.cu" in order to position the amino acids through space.
