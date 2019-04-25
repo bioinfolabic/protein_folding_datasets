@@ -199,6 +199,12 @@ The following image represents the output of the program:
 
 ## Path GPU
 To use the GPU program you need to have a GPU with pascal and cuda support. The pathways of this work were run on Titan Xp with Cuda 8.
+The input file of the program in GPU is the same one used by the program in CPU, being the datasets produced in the program in GPU referring to proteins 1PLC and 5NAZ. The input file data is:
+
+ Protein  |  Sequence | nMol | ProtLen |  LV  |   nC  |
+--------- | ----------|------|---------|------|-------|
+1PCL      | see paper |  99  |    99   |  198 |   98  |
+5NAZ      | see paper | 229  |   229   |  458 |  228  |
 
 ### ▪ Makefile:
 File with the commands for compiling and running the program in GPU.
