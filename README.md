@@ -233,8 +233,7 @@ make run_all_5NAZ_1_0
 ### ▪ main.c:
 
 ### ▪ mt.h:
-
-
+It is the Mersenne Twister library used by the program "functions.cu" in order to position the amino acids through space.
 
 ## Path Results
 Contains all datasets and graphs generated during this work.
