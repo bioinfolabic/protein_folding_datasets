@@ -197,9 +197,6 @@ The following image represents the output of the program:
 ![example_heatmap](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/heatmap_1PCY_begin.png)
 
 
-## Path Results
-Contains all datasets and graphs generated during this work.
-
 ## Path GPU
 To use the GPU program you need to have a GPU with pascal support. The pathways of this work were run on Titan Xp with Pascal 8.
 
@@ -224,6 +221,9 @@ To execute the exemplified command as well as all subsequent commands through th
 ```
 make run_all_5NAZ_1_0
 ```
+
+## Path Results
+Contains all datasets and graphs generated during this work.
 
 ## All data that needs to be changed to place the input files are indicated in the program with the following comment:
 ```
