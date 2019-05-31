@@ -6,10 +6,10 @@ An animation of a 1PCL protein folding path is shown below.
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
 
 
-## How to generate a trajectory of protein folding problem
+## How to generate a protein folding trajectory
 
-A step-by-step tutorial for generating a protein folding pathway and analyzing it is described in the step-by-step directory.
-This directory contains all the programs and a link with all instructions to perform this task.
+A simple step-by-step tutorial for generating a protein folding pathway and analyzing it is described in the step-by-step directory.
+This directory contains all programs and a link with all instructions to perform this task.
 
 
 The programs used to generate the datasets and charts for the analyzes are described below.
