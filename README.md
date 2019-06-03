@@ -144,8 +144,6 @@ where 3 the number of frames per second, 720x480 the resolution, "%d.png" the na
 
 ### ▪ Sub-Path images:
 Folder containing the examples of images obtained through the previous program.
-### ▪ remove_lines.py:
-Python program that removes all the contents of a file from a specific line. This program is very useful if you run the "create_datasets" program twice and the pathways override.
 
 
 
