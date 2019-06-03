@@ -18,9 +18,9 @@ import matplotlib.gridspec as gridspec
 #######################################################################################################################################################################
 ################################################################### CHANGE HERE #######################################################################################
 #######################################################################################################################################################################
-path_pathways = '/home/leandro/Downloads/Leandro/'      						 			 # folder in which the datasets are
-filename = 'pathways56_2.txt'                             						 # name of the dataset from which the images will be created
-filesequencia = '2GB1.txt'                               					  	     # file containing the AB sequence of the protein
+path_pathways = '/home/leandro/Downloads/Leandro/'      			 			 # folder of the protein pathway data
+filename = 'pathways56_2.txt'                             						 # name of the pathway data
+filesequencia = '2GB1.txt'                               				  	     # file containing the AB sequence of the protein
 path_save = 'img/'                            				     	   		     # folder where the images will be saved
 ########################################################################################################################################################################
 ########################################################################################################################################################################
