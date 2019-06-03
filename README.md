@@ -6,7 +6,7 @@ An animation of a 1PCL protein folding path is shown below.
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
 
 
-Link for the Dataset of Spatiotemporal Pathways of Protein Folding: https://mega.nz/#F!O4wBHQiB!mpM81jK9ycbSKPvdP57avw
+Link for the Dataset of Spatiotemporal Pathways of Protein Folding: https://mega.nz/#F!bkAGBYqY!seOEvRpsEvF0U1Pa89lqvw
 
 
 ## How to generate a protein folding trajectory
