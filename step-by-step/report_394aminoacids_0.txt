@@ -1,1 +1,0 @@
-Step	t	Current temperature	KineticEnergy	Potential Energy	Internal Energy	Pressure	Density	RgH	RgP	RgAll	Bond length Average
