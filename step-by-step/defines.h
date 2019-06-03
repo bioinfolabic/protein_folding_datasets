@@ -45,7 +45,7 @@ defines.h: defines, includes and globals
 //Protein max length
 #define SEQ_MAX_LENGTH 200
 
-#define TAMPATHWAY 1002
+#define TAMPATHWAY 1001
 
 
 typedef unsigned int BOOL;

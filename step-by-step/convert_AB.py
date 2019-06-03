@@ -46,7 +46,8 @@ def convert(amino):
         print 'ERROR 404 amino not found !!!!!!!!!!!!!!!!!!'
         return 0
     
-def main(sequence):
+def main(sequence, name):
+    name = name + '.txt'
     sequence_AB = []
     
     sequence = list(sequence)
@@ -61,9 +62,14 @@ def main(sequence):
     sequence_AB = ''.join(sequence_AB)
     print sequence_AB
 
+    arquivo = open(name, 'w')
+    arquivo.write(sequence_AB)
+    arquivo.close()
+
     return 'O.K :)'
 
 
 
-s = 'SVAHGFLITRHSQTTDAPQCPQGTLQVYEGFSLLYVQGNKRAHGQDLGTAGSCLRRFSTMPFMFCNINNVCNFASRNDYSYWLSTPEPMPMSMQPLKGQSIQPFISRCAVCEAPAVVIAVHSQTIQIPHCPQGWDSLWIGYSFMMHTSAGAEGSGQALASPGSCLEEFRSAPFIECHGRGTCNYYANSYSFWLATVDVSDMFSKPQSETLKAGDLRTRISRCQVCMKRT'
-print main(s)
+s = 'MTYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE'
+name = '2GB1'
+print main(s, name)
