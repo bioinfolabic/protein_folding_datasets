@@ -1,6 +1,6 @@
 # Generation of Spatiotemporal Pathways of Protein Folding Using Molecular Dynamics with a Coarse-grained Model
 
- This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method. Four datasets are described: the first one is based on the Fibonacci sequence (**13FIBO**) and the other three on real biological sequences (**2GB1**,**1PLC** and **5NAZ**). Each dataset is composed of **1000 different trajectories data**, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and the free energy and radius of gyration values for each structure.
+ This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method. Four datasets are described: the first one is based on the Fibonacci sequence (**13FIBO**) and the other three on real biological sequences (**2GB1**,**1PLC** and **5NAZ**). Each dataset is composed of **1000 folding states**, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and the free energy and radius of gyration values for each structure.
  
 Link for the Dataset of Spatiotemporal Pathways of Protein Folding: https://mega.nz/#F!bkAGBYqY!seOEvRpsEvF0U1Pa89lqvw
 
@@ -91,7 +91,7 @@ Once compiled, the program is ready to run. For this you can use the command:
 ```
 ./a.out Proteins / 5NAZ / 5NAZ_229.in Proteins / 5NAZ / GPU1_0 / 5NAZ_229_pathway 00> 5NAZ_229.txt 20; \
 ```
-Being a.out the generated file, "Proteins / 5NAZ /" the location of the input file, "5NAZ_229.in" the input file, "Proteins / 5NAZ / GPU1_0 /" the location where the pathway will be saved, "5NAZ_229_pathway 00 > 5NAZ_229.txt "the name of the resulting pathway where" 00> "indicates where the program will place a variable to identify the pathway," 2 "indicates the id of the pathway to be generated and" 0 "indicates the GPU in which the program will be executed.
+Being a.out the executable program, "Proteins / 5NAZ /" the location of the input file, "5NAZ_229.in" the input file, "Proteins / 5NAZ / GPU1_0 /" the location where the pathway will be saved, "5NAZ_229_pathway 00 > 5NAZ_229.txt "the name of the resulting pathway where" 00> "indicates where the program will place a variable to identify the pathway," 2 "indicates the id of the pathway to be generated and" 0 "indicates the GPU in which the program will be executed.
 
 To execute the exemplified command as well as all subsequent commands through the linux terminal just use the command:
 ```
