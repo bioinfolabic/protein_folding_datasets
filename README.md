@@ -1,12 +1,11 @@
 # Generation of Spatiotemporal Pathways of Protein Folding Using Molecular Dynamics with a Coarse-grained Model
 
  This work reports datasets for the study of protein folding dynamics, corresponding to the spatiotemporal data of folding trajectories obtained by an in silico method. Four datasets are described: the first one is based on the Fibonacci sequence (**13FIBO**) and the other three on real biological sequences (**2GB1**,**1PLC** and **5NAZ**). Each dataset is composed of **1000 different trajectories data**, each containing structural information of the protein during the folding process including the spatial coordinates of each amino acid at each time step, and the free energy and radius of gyration values for each structure.
-
+Link for the Dataset of Spatiotemporal Pathways of Protein Folding: https://mega.nz/#F!bkAGBYqY!seOEvRpsEvF0U1Pa89lqvw
 An animation of a 1PCL protein folding path is shown below.
 ![example_dataset](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/gif_exemplo.gif)
 
 
-Link for the Dataset of Spatiotemporal Pathways of Protein Folding: https://mega.nz/#F!bkAGBYqY!seOEvRpsEvF0U1Pa89lqvw
 
 
 ## How to generate a protein folding trajectory
