@@ -20,7 +20,7 @@ import matplotlib.gridspec as gridspec
 #######################################################################################################################################################################
 ################################################################### CHANGE HERE #######################################################################################
 #######################################################################################################################################################################
-path_pathways = '/home/leandro/Dropbox/Doutorado/Codigo/pathway_print_bruna/' 	 # folder in which the datasets are
+path_pathways = '/home/user/.../protein_folding_datasets/step-by-step/' 	     # folder in which the datasets are
 filename = 'pathways56_0.txt'                             						 # name of the dataset from which the images will be created
 filesequencia = '2GB1.txt'                               					     # file containing the AB sequence of the protein
 path_save = 'img'                            				     	   		     # folder where the images will be saved
