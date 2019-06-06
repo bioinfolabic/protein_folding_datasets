@@ -6,7 +6,7 @@ import sys
 #OBS> make sure that the file fasta is in the same directory as the program AB_sequence.py
 
 
-#This function classifies each amino acid in hydrophobic (A) or polar (B) using Alberts classification
+#This function classifie each amino acid in hydrophobic (A) or polar (B) with Alberts classification
 def convert(amino):
     if amino == 'G':
         return 'A'
@@ -81,12 +81,6 @@ def main(protein_name):
 
     return 'O.K :)'
     
-
-
-#s = 'MTYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE'
-#name = '2GB1'
-#print main(s, name)
-
 if __name__ == '__main__':
 
     main(sys.argv[1].lower())    
