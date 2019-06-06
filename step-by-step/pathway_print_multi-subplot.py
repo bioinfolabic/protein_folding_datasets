@@ -6,6 +6,8 @@ import StringIO
 import re
 import imageio
 import glob
+import os
+
 
 import matplotlib as mpl
 mpl.use('Agg')
@@ -18,14 +20,24 @@ import matplotlib.gridspec as gridspec
 #######################################################################################################################################################################
 ################################################################### CHANGE HERE #######################################################################################
 #######################################################################################################################################################################
-path_pathways = '/home/leandro/Downloads/step-by-step/' 			 			 # folder in which the datasets are
+path_pathways = '/home/leandro/Dropbox/Doutorado/Codigo/pathway_print_bruna/' 	 # folder in which the datasets are
 filename = 'pathways56_0.txt'                             						 # name of the dataset from which the images will be created
-filesequencia = '2GB1.txt'                               					  	     # file containing the AB sequence of the protein
+filesequencia = '2GB1.txt'                               					     # file containing the AB sequence of the protein
 path_save = 'img/'                            				     	   		     # folder where the images will be saved
 ########################################################################################################################################################################
 ########################################################################################################################################################################
 
+def create_folding_img_directiory():
+	# Create directory
+	path_save = 'img'
 
+	# Create target Directory if don't exist
+	if not os.path.exists(path_save):
+		os.mkdir(path_save)
+		print("Directory " , path_save ,  " Created ")
+	else:    
+		print("Directory " , path_save ,  " already exists")
+        	
 def open_file(filename):
 	f = open(filename, 'r')
 	return f 
@@ -35,7 +47,6 @@ def close_file(f):
 
 def read_file(f):
 	count = 0
-	#dataset = []
 	data    = [] 
 	features = []
 	first = 0
@@ -55,12 +66,9 @@ def read_file(f):
 		if(len(test) == 0 and len(test2) > 0): # copy the line that has the coord information   
 			aux = (np.genfromtxt(StringIO.StringIO(line), delimiter="\t"))
 			data = np.append(aux,data)	
-			#print aux
 		if(len(test) > 0 and len(test2) > 0): # copy the line that has the coord information   
 			aux = (np.genfromtxt(StringIO.StringIO(line), dtype=[('mystring','S5'),('myfloat','f8')], delimiter=" = "))
 			features.append(aux)
-			#print aux
-	#print "leandro: ", features[0]	
 	return np.array(data), np.array(features)
 
 def get_shape(dataset):
@@ -114,15 +122,18 @@ def get_feature(feature):
 
 
 def main():
+
+	print "reading..."
 	f = open_file(path_pathways + filename)
 	fs = open_file(path_pathways + filesequencia)
 	dataset, feat = read_file(f)
 	close_file(f)
 	
+	print "pre-processing..."
 	shape = get_shape(dataset)
-	print "shape: ", shape
+	#print "shape: ", shape
 	dataset        = format_dataset(dataset, shape)
-	print "new shape: ", dataset.shape
+	#print "new shape: ", dataset.shape
 
 	coords_max_min = np.zeros(shape=(2,3))
 	for i in xrange(0,3):
@@ -142,10 +153,8 @@ def main():
 
 	feature_Pot, feature_Step, feature_rGAll, feature_rGH, feature_rGP  = get_feature(feat)
 
-	#print feature_Pot	
-	#ep_pos = np.where(feat == 'Poten')[0]
-	#print ep_pos
-
+	create_folding_img_directiory()
+	print "ploting..."
 	for i in xrange(0,dataset.shape[0]):
 		print "iteration: ", i
 
@@ -169,14 +178,14 @@ def main():
 		#===========================================================================
 		ax2 = fig.add_subplot(gs[0, 1])
 
-		ax2.plot(np.linspace(0, feature_rGH.shape[0], dataset.shape[0]), feature_rGH, color='salmon', label='rGH')
-		ax2.plot(np.linspace(0, feature_rGP.shape[0], dataset.shape[0]), feature_rGP, color='cornflowerblue', label='rGP')
+		ax2.plot(np.linspace(0, feature_rGH.shape[0], dataset.shape[0]), feature_rGH, color='salmon', label='RgH')
+		ax2.plot(np.linspace(0, feature_rGP.shape[0], dataset.shape[0]), feature_rGP, color='cornflowerblue', label='RgP')
 
-		ax2.plot(np.array([i,i]), np.array([np.asarray([feature_rGH.min(), feature_rGP.min()]).min(), np.asarray([feature_rGH.max(), feature_rGP.max()]).max()]) , color='orange', dashes=[6, 2], label='current rG')
+		ax2.plot(np.array([i,i]), np.array([np.asarray([feature_rGH.min(), feature_rGP.min()]).min(), np.asarray([feature_rGH.max(), feature_rGP.max()]).max()]) , color='orange', dashes=[6, 2], label='current Rg')
 
 
 		ax2.grid(True)
-		ax2.set_ylabel('rG')
+		ax2.set_ylabel('Rg')
 		ax2.set_xlabel('Iteration')
 		ax2.legend(loc='upper right')
 
