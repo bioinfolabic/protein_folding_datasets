@@ -23,7 +23,6 @@ int main (int argc, char **argv)
 		finish = Step();		// faz todas as contas para calcular as posiçẽos de cada dobramento
 		k++;
 	}	//main function MD
-	savePathwaysVetorArquivo();
 	// time_ex();
 	freeArrays();					// apenas libera tudo o que foi alocado no programa
 	
