@@ -10,11 +10,11 @@ An animation of a 1PCL protein folding path is shown below.
 
 
 
-## How to generate a protein folding trajectory
+## How to generate a protein folding trajectory (step-by-step)
 
-A simple step-by-step tutorial for generating a protein folding pathway and analyzing it is described in the step-by-step directory.
-This directory contains all programs and a link with all instructions to perform this task.
+A simple step-by-step tutorial for generating a protein folding pathway and analyzing it is described in the step-by-step directory. This directory contains all programs and a link with all instructions to perform this task.
 
+link <a>https://docs.google.com/document/d/1eMHSIlK7uSWcBb08r4mtGr2vNuipJNQFbF34CkoNHbM/edit?usp=sharing</a>
 
 The programs used to generate the datasets and charts for the analyzes are described below.
 
