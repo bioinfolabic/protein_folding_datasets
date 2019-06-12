@@ -68,8 +68,15 @@ Examples of output from the "create_datasets" program using a fibonacci sequence
 
 
 ## Path GPU
-To use the GPU program you need to have a GPU with pascal and cuda support. The pathways of this work were run on Titan Xp with Cuda 8.
-The input file of the program in GPU is the same one used by the program in CPU, being the datasets produced in the program in GPU referring to proteins 1PLC and 5NAZ. The input file data is:
+To use the GPU program you need to have a GPU with pascal and cuda support. The pathways of this work were run on Titan Xp with Cuda 8 and Cuda 9.
+The input file of the program in GPU is similar one used by the program in CPU, as shown in the figure below. 
+
+![example_dataset_GPU](https://github.com/bioinfolabic/protein_folding_datasets/blob/master/Images/exemplo.png)
+
+Through the GPU program the datasets of the 1PLC and 5NAZ proteins were produced.
+
+
+
 
  Protein  |  Sequence | nMol | ProtLen |  LV  |   nC  |
 --------- | ----------|------|---------|------|-------|
