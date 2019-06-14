@@ -100,7 +100,6 @@ Particle *best_structure;
 Constraint * constraint;
 int **mMat;
 double *lMat;
-int *neighbour_list;
 
 /***   From file   ***/
 char sequence[SEQ_MAX_LENGTH];
@@ -113,12 +112,10 @@ int n_c;
 double LV;
 double dt;
 double r_cut;
-double skin;
 double c_T;
 double temperature;
 double temperature_steps;
 
-int step2neighbour;
 int display_interval;
 int step_limit;
 int step2resc_vels;
@@ -173,7 +170,6 @@ double *d_uB;
 double *d_uT;
 double *d_uLJ;
 double *d_uLJVector;
-int *d_neighbour_list;
 char *d_sequence;
 
 Constraint * d_constraint;

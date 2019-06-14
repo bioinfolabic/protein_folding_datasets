@@ -35,7 +35,6 @@ void initMD();
 
 /***   MD   ***/
 void updatePos();
-void updateNeighbourList();
 void computeForces();
 void updateVelocities();
 void step();

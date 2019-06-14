@@ -115,8 +115,6 @@ int loadFile(char **argv) {
 		getParameter("LV", "=", "%lf", &LV, fi);
 		getParameter("dt", "=", "%lf", &dt, fi);
 		getParameter("rCut", "=", "%lf", &r_cut, fi);
-		getParameter("skin", "=", "%lf", &skin, fi);
-		getParameter("step2neighbour", "=", "%d", &step2neighbour, fi);
 		getParameter("cT", "=", "%lf", &c_T, fi);
 		getParameter("displayInterval", "=", "%d", &display_interval, fi);
 		getParameter("stepLimit", "=", "%d", &step_limit, fi);
@@ -185,8 +183,6 @@ void putParameters() {
 	printf("Dimension of the Box >>             %lf\n", LV);
 	printf("Time Step >>                        %lf\n", dt);
 	printf("Cutoff Radius >>                    %lf\n", r_cut);
-	printf("Skin >>                             %lf\n", skin);
-	printf("Steps to Update Neighbour List >>   %d\n", step2neighbour);
 	printf("cT >>                               %lf\n", c_T);
 	printf("Display Interval >>                 %d\n", display_interval);
 	printf("Step Limit >>                       %d\n", step_limit);
@@ -342,13 +338,6 @@ void allocArrays() {
 	lMat[0] = malloc(n_c * n_c * sizeof(double));
 	for(i = 1; i < n_c; i++)
 		lMat[i] = lMat[0] + i * n_c;*/
-
-	//neighbour_list = (int *) malloc(n_mol * n_mol * sizeof(int));
-	//uLJ1 = (double *) malloc(n_mol * sizeof(double));
-	//neighbour_list = (int **) malloc(n_mol * sizeof(int *));
-	//neighbour_list[0] = (int *) malloc(n_mol * n_mol * sizeof(int));
-	//for(i = 1; i < n_mol; i++)
-	//	neighbour_list[i] = neighbour_list[0] + i * n_mol;
 }
 
 void allocDevice() {
@@ -359,13 +348,6 @@ void allocDevice() {
     cudaMalloc((void **)&d_uLJ, sizeof(double));
     cudaMalloc((void **)&d_uLJVector, blockSize * sizeof(double));
     cudaMalloc((void **)&d_sequence, n_mol * sizeof(char));
-    cudaMalloc((void **)&d_neighbour_list, n_mol * n_mol * sizeof(int));
-	//cudaMalloc((void **)&d_neighbour_list, n_mol * sizeof(int *));
-	//cudaMalloc((void **)&d_neighbour_list[0], n_mol * n_mol * sizeof(int));
-	//for(i = 0; i < n_mol; i++)
-	//	cudaMalloc(&neighbour_list[i], n_mol * n_mol * sizeof(int));
-	//cudaMemcpy(d_neighbour_list, neighbour_list, n_mol * sizeof(int *), cudaMemcpyHostToDevice);
-
     cudaMalloc((void**)&d_constraint, n_c * sizeof(Constraint));
 }
 
@@ -530,21 +512,6 @@ __global__ void cudaUpdatePos(Particle *particles, double dt ,double LV) {
 		particles[threadId].v_a.y = 0.;
 		particles[threadId].v_a.z = 0.;
 
-	}
-}
-
-//   Think of other methods for representing the list
-__global__ void cudaUpdateNeighbourList(Particle *particles, int *neighbour_list, double r_cut, double skin) {
-
-	for(int i = blockIdx.x; i < d_nmol - 2; i += gridDim.x) {
-		for(int j = threadIdx.x; j >= i + 2 && j < d_nmol; j += blockDim.x) {
-			double r = sqrt(sqr(particles[j].v_r.x - particles[i].v_r.x) + sqr(particles[j].v_r.y - particles[i].v_r.y) + sqr(particles[j].v_r.z - particles[i].v_r.z));
-
-			if(r <= (r_cut + skin))
-				neighbour_list[i * d_nmol + j] = 1;
-			else
-            	neighbour_list[i * d_nmol + j] = 0;
-		}
 	}
 }
 
@@ -766,7 +733,7 @@ __global__ void cudaTorsionEnergy(Particle *particles, double *d_uT, double LV) 
 	}
 }*/
 
-__global__ void cudaLJcomp(Particle *particles, int *d_neighbour_list, char *d_sequence, double LV, double *d_uLJVector, int i, int n_mol) {
+__global__ void cudaLJcomp(Particle *particles, char *d_sequence, double LV, double *d_uLJVector, int i, int n_mol) {
 	// Shared Memory - be careful when using it with dynamic parallelism
 	extern __shared__ double d_uLJComp[];
 
@@ -776,7 +743,6 @@ __global__ void cudaLJcomp(Particle *particles, int *d_neighbour_list, char *d_s
 	VectorR dr1;
 
 	if((j < n_mol) && (j > i + 1)) {
-		//if(d_neighbour_list[i * d_nmol + j] == 1) {
     		dr1.x = particles[i].v_r.x - particles[j].v_r.x;
     		dr1.y = particles[i].v_r.y - particles[j].v_r.y;
     		dr1.z = particles[i].v_r.z - particles[j].v_r.z;
@@ -786,12 +752,6 @@ __global__ void cudaLJcomp(Particle *particles, int *d_neighbour_list, char *d_s
     		r2 = (dr1.x * dr1.x) + (dr1.y * dr1.y) + (dr1.z * dr1.z);
     		u_LJ = 4. * (pow(r2, -6) - pow(r2, -3));
     		f_LJ = 24. * (2. * pow(r2, -7) - pow(r2, -4));
-
-    		// See (Irback, 1997)
-            /*if((d_sequence[i] == 'A' && d_sequence[j] == 'B') || (d_sequence[i] == 'B' && d_sequence[j] == 'A') || (d_sequence[i] == 'B' && d_sequence[j] == 'B')) {
-    			u_LJ = 0.5 * u_LJ;
-    			f_LJ = 0.5 * f_LJ;
-    		}*/
             
             if( (d_sequence[i] != 'A') || (d_sequence[j] != 'A') ) {
     			u_LJ = 0.5 * u_LJ;
@@ -806,14 +766,6 @@ __global__ void cudaLJcomp(Particle *particles, int *d_neighbour_list, char *d_s
     		atomicAdd(&particles[j].v_a.z, -(dr1.z * f_LJ));
 
     		d_uLJComp[j] = u_LJ;
-			if(i == 70){
-				//printf("i: %d   j: %d   d_uLJComp[%d] = %.15lf\n", i, j, j, d_uLJComp[j]); //print 1 - OK
-			}
-			//printf("i:%d   j: %d   d_uLJComp: %.8lf   u_LJ: %lf\n", i, j, d_uLJComp[j], u_LJ);
-    		//d_uLJVector[i * blockSize + j] = u_LJ;
-    	//} else {
-    	//	d_uLJComp[j] = 0.;
-    	//}
     } else {
 		//printf("entrou no else do cudaLJ    j: %d    i: %d\n", j, i);
 		d_uLJComp[j] = 0.;
@@ -922,7 +874,7 @@ __global__ void cudaLJcomp(Particle *particles, int *d_neighbour_list, char *d_s
 
 }
 
-__global__ void cudaLJ(Particle *particles, int *d_neighbour_list, char *d_sequence, double LV, double *d_uT, double *d_uB, double *d_uLJ, double *d_uLJVector, int step, int n_mol){
+__global__ void cudaLJ(Particle *particles, char *d_sequence, double LV, double *d_uT, double *d_uB, double *d_uLJ, double *d_uLJVector, int step, int n_mol){
 	// Shared Memory - be careful when using it with dynamic parallelism
 	extern __shared__ double d_u[];
 
@@ -937,66 +889,66 @@ __global__ void cudaLJ(Particle *particles, int *d_neighbour_list, char *d_seque
 		{
 			__syncthreads();
 			if(threadId == 0){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);
 			}
 			__syncthreads();
 			if(threadId < 20){
 				if(threadId > 0){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 40){
 				if(threadId > 19){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 60){
 				if(threadId > 39){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 80){
 				if(threadId > 59){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 100){
 				if(threadId > 79){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 120){
 				if(threadId > 99){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 140){
 				if(threadId > 119){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 160){
 				if(threadId > 139){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 180){
 				if(threadId > 159){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 200){
 				if(threadId > 179){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId < 220){
 				if(threadId > 199){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);}
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);}
 			}
 			__syncthreads();
 			if(threadId > 119){
-					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_neighbour_list, d_sequence, LV, d_uLJVector, threadId, n_mol);
+					cudaLJcomp <<< 1, blockSize, (blockSize + 1) * sizeof(double) >>> (particles, d_sequence, LV, d_uLJVector, threadId, n_mol);
 			}
 			__syncthreads();
 			d_u[threadId] = d_uLJVector[threadId];
@@ -1011,7 +963,7 @@ __global__ void cudaLJ(Particle *particles, int *d_neighbour_list, char *d_seque
 
 }
 
-__global__ void cudaEnergy(Particle *particles, int *d_neighbour_list, char *d_sequence, double LV, double *d_uT, double *d_uB, double *d_uLJ, double *d_uLJVector, int step) {
+__global__ void cudaEnergy(Particle *particles, char *d_sequence, double LV, double *d_uT, double *d_uB, double *d_uLJ, double *d_uLJVector, int step) {
 	// Shared Memory - be careful when using it with dynamic parallelism
 	extern __shared__ double d_u[];
 
@@ -1235,31 +1187,10 @@ void step() {
 	cudaUpdateVelocities <<< 1, blockSize >>> (d_particles, dt);
     cudaDeviceSynchronize();
 
-    /***   Are there atoms that have moved too much?   ***/
-	/***   Update neighbour list with all atom pairs within a distance range   ***/
-	// Quando chamar o update?
-
-    /*
-	if (i_step % step2neighbour == 0) {
-		cudaUpdateNeighbourList <<< n_mol, blockSize >>> (d_particles, d_neighbour_list, r_cut, skin);
-        cudaDeviceSynchronize();
-    }
-    */
-
-    /***   Compute forces on all atoms using neighbour list   ***/
-    // mudar para que transferencia nao seja necessaria sempre
-    //cudaMemcpy(d_particles, particles, n_mol * sizeof(Particle), cudaMemcpyHostToDevice);
-	//cudaMemcpy(d_neighbour_list, neighbour_list, n_mol * n_mol * sizeof(int), cudaMemcpyHostToDevice);
-	//cudaMemcpy(d_sequence, sequence, n_mol * sizeof(char), cudaMemcpyHostToDevice);
-
-	//cudaZeroOut<<<1, blockSize>>>(d_particles);
-    //cudaDeviceSynchronize();
-
     /*** Compute forces ***/
-	//printf("blocksize: %d", blockSize);
-	cudaLJ <<< 3, blockSize, (blockSize + 1) * sizeof(double) >>> (d_particles, d_neighbour_list, d_sequence, LV, d_uT, d_uB, d_uLJ, d_uLJVector, i_step, n_mol);
+	cudaLJ <<< 3, blockSize, (blockSize + 1) * sizeof(double) >>> (d_particles, d_sequence, LV, d_uT, d_uB, d_uLJ, d_uLJVector, i_step, n_mol);
 	cudaDeviceSynchronize();
-    cudaEnergy <<< 3, blockSize, (blockSize + 1) * sizeof(double) >>> (d_particles, d_neighbour_list, d_sequence, LV, d_uT, d_uB, d_uLJ, d_uLJVector, i_step);
+    cudaEnergy <<< 3, blockSize, (blockSize + 1) * sizeof(double) >>> (d_particles, d_sequence, LV, d_uT, d_uB, d_uLJ, d_uLJVector, i_step);
     cudaDeviceSynchronize();
 
     /* Primeiro step LJ errado, passei para cima
@@ -1673,14 +1604,11 @@ void freeArrays() {
 	free((void *)mMat);
 	//free(lMat[0]);
 	//free(lMat);
-	//free((void *)neighbour_list[0]);
-	//free(neighbour_list);
 }
 
 void freeDevice() {
     cudaFree(d_particles);
     cudaFree(d_sequence);
-    cudaFree(d_neighbour_list);
 	cudaFree(d_uB);
 	cudaFree(d_uT);
 	cudaFree(d_uLJ);
