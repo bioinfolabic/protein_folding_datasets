@@ -1,0 +1,55 @@
+/*Input file*/
+sequence = ABBABBABABBAB
+mass = 1
+nMol = 13
+BondLen = 1
+ProtLen = 13
+nC = 12
+LV = 26
+dt = 0.0001
+rCut = 2.5
+skin = 0.5
+step2neighbour = 5
+cT = 0.01
+displayInterval = 100
+stepLimit = 3000
+step2rescVels = 1
+temperature = 0.1
+temperature_steps = 0.10
+report_file = y
+step2report = 1000
+printsummary = n
+printsummaryInterval = 160
+printsummary2file = y
+shake-consPrec = 1.0e-06
+shake-maxCycle = 1
+shake-step2shake = 10
+savepathways = y
+pathwaysstep = 600
+
+
+/*
+mass 	: mass
+nMol 	: number of particles
+BondLen : bond length
+ProtLen : protein size, number of amino acids
+nC 		: number of constraints. nc = ProtLen - 1
+LV 	 	: lenght of the 2D or 3D box
+dt 	 	: time step
+displayInterval : steps to show particles (refresh)
+stepLimit 		: max number of steps
+step2rescVels   :  steps to rescale velocities
+temperature 	: temperature
+temperature_steps : value of temperature steps used when temperature-- and temperature++ are pressed
+report_file  =y --> generate report file
+printsummary =y --> print summary 
+
+* shake relaxation method parameteres:
+	- shake-consPrec 	: tolerance used in establishing convergence
+	- shake-maxCycle 	: iterations. should not be much greater than ten. 
+	- step2shake 		: number of iterations before shake
+
+* Pathway output
+savepathways = y		: enable the function that save amino acids coordinates in txt files. This files can be used to show an example of pathway
+pathwaysstep = 30000	: steps between generations of txt coordinates files.
+*/
