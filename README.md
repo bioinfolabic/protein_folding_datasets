@@ -39,28 +39,25 @@ DOC - directory with a step-by-step manual for the new users.
 ## Computing Capability of the PathMolD-AB
 The programs were tested in the following configurations.
 
-+-----------------------------------------------+
-|     PathMolD-AB capability (ubuntu 18 LTS)    |
-+-----------------------------------------------+
-|          | Computing  | CUDA7 | CUDA8 | CUDA9 |
-|          | Capability |       |       |       |
-+----------+------------+-------+-------+-------+
+PathMolD-AB capability (ubuntu 18 LTS)
+Computing Capability (CC)
+
+| GPU model| CC         | CUDA7 | CUDA8 | CUDA9 |
+
 | GTX660   | 3          |   NO  |   NO  |   NO  |
-+----------+------------+-------+-------+-------+
+
 | K40      | 3.5        |   NO  |   NO  |   NO  |
-+----------+------------+-------+-------+-------+
+
 | GTX750   | 5          |   NO  |   NO  |   NO  |
-+----------+------------+-------+-------+-------+
+
 | Titan X  | 5.2        |   NO  |  YES  |  YES  |
-+----------+------------+-------+-------+-------+
+
 | GTX 1080 | 6.1        |   NO  |  YES  |  YES  |
-+----------+------------+-------+-------+-------+
+
 | Titan Xp | 6.1        |   NO  |  YES  |  YES  |
-+----------+------------+-------+-------+-------+
-| GCC/G++               |  4.8  |  5.3  |  6.5  |
-+-----------------------+-------+-------+-------+
+
+| GCC/G               |  4.8  |  5.3  |  6.5  |
 | Python                |        2.7/3.6        |
-+-----------------------+-----------------------+
 
 for any doubt send a email to ​leandrotakeshihattori@gmail.com
 
