@@ -1,6 +1,6 @@
 # PathMolD-AB
 
-PathMolD-AB is a software package that allows for generating biomolecular folding pathway datasets using massively parallel MD methods in the canonical ensemble. The software describes proteins by a coarse-grained AB model, and it is designed for extensive processing in GPU architectures, therefore being ready for data production in modern High-Performance Computing (HPC) facilities. Also, PathMolD-AB incorporates modules for the analyses of its output folding trajectories.
+PathMolD-AB is a software package for generating biomolecular folding pathway datasets using massively parallel MD methods in the canonical ensemble. The software describes proteins by a coarse-grained AB model, and it is designed for extensive processing in GPU architectures, therefore being ready for data production in modern High-Performance Computing (HPC) facilities. Also, PathMolD-AB incorporates modules for the analyses of its output folding trajectories.
 
 ## Directories Structure
 
