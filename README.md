@@ -28,11 +28,17 @@ SRC_CPU - directory with the simulation of Molecular Dynamics software in the se
 DOC - directory with a step-by-step manual for the new users.
 
 *the root directory contains makefile to run the programs. 
+
 	$ make ab               # convert the AB sequence from the amino acid sequence
+	
 	$ make gpu 	        # compile the parallel molecular dynamic version
+	
 	$ make cpu              # compile the sequential molecular dynamic version
+	
 	$ make run_gpu          # execute the parallel molecular dynamic version
+	
 	$ make run_cpu          # execute the sequential molecular dynamic version
+	
 	$ make vizualize        # generating the folding simulation video
 
 
